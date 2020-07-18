@@ -1,0 +1,91 @@
+<div class="shopping-cart-conatiner">
+
+    <div class="title">
+        My Cart
+    </div>
+    <div class="header">
+
+
+        <div class="img">
+
+        </div>
+        <div class="name">
+            Product
+        </div>
+        <div class="price">
+            Price
+        </div>
+        <div class="quantity">
+            Quantity
+        </div>
+        <div class="total">
+            Total
+        </div>
+        <div class="close">
+
+        </div>
+    </div>
+
+    <div class="body" *ngFor="let item of cartList">
+
+        <div class="img">
+
+            <img class="productImg" src="{{item.image}}" alt="Photo of a Shiba Inu">
+        </div>
+        <div class="name" >
+            <h3> NIKE {{item.id}}</h3>
+            <p> Far far away, behind the word mountains, far from the countries</p>
+        </div>
+        <div class="price">
+            {{item.price}}
+        </div>
+        <div class="quantity">
+            <mat-icon class="close-icon">add</mat-icon>
+            <input style="height: 20px; margin-right: 5px; text-align: center;" type="text" size="1" [(ngModel)]="quantaty"  />
+            <mat-icon class="close-icon">remove</mat-icon>
+        </div>
+        <div class="total">
+            {{item.totel}}
+
+        </div>
+        <div class="close">
+            <mat-icon class="close-icon" (click)=" deleteCartListItem(item.id)">close</mat-icon>
+        </div>
+
+    </div>
+
+
+
+    <div class="cart-total">
+        <h2>CART TOTALS</h2>
+        <hr>
+        <table style="width: 100%">
+            <tr>
+                <td>Subtotal</td>
+                <td>{{cartTotal | currency: 'INR'}}</td>
+            </tr>
+            <tr>
+                <td>Delivery</td>
+                <td>{{0 | currency: 'INR'}}</td>
+            </tr>
+            <tr>
+                <td>Discount</td>
+                <td>{{100 | currency: 'INR'}}</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                    
+                <td>GrandTotal</td>
+                <td><b>{{cartTotal - 100 | currency: 'INR'}}</b></td>
+            </tr>
+        </table>
+        <!-- <div class="checkout-button">
+            <button mat-stroked-button color="primary" class="button full-button">PROCEED TO CHECKOUT</button>
+        </div> -->
+    </div>
+
+</div>
